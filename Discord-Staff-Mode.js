@@ -10,4 +10,3 @@ oldGetUser = usermod.exports.default.__proto__.getCurrentUser;
 usermod.exports.default.__proto__.getCurrentUser = () => ({isStaff: () => true})
 nodes.find(x => x.name == "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]()
 usermod.exports.default.__proto__.getCurrentUser = oldGetUser
-//Note: This will unload when reloading Discord.
