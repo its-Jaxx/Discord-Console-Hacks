@@ -10,5 +10,5 @@ You should be able to find this by pressing win+r and entering %appdata% and pre
 # What to change
 If there is no line saying "DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING", add it and add ":true,"
 It should look something like this:
-https://imgur.com/a/OguGgZh
+<a href="https://imgur.com/a/OguGgZh" target="_blank" rel="noopener noreferrer">Imgur</a>
 Now press ctrl+s to save the file. Relaunch Discord, and it should work now.
