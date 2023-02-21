@@ -5,4 +5,3 @@ original = [module.getCurrentUser, module.getNonImpersonatedCurrentUser];
 module.getCurrentUser = module.getNonImpersonatedCurrentUser = () => ({ isStaff: () => true });
 nodes.find(x => x.name == "DeveloperExperimentStore").actionHandler["OVERLAY_INITIALIZE"]();
 [module.getCurrentUser, module.getNonImpersonatedCurrentUser] = original;
-//Note: This will automatically unload when reloading Discord. Settings will be restored when re-enabling it.
