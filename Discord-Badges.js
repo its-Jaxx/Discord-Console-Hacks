@@ -22,5 +22,3 @@
         }
     }]);
 })();
-//Note: This will give you every single badge, however, it's only client side, meaning only you will see it.
-//Note: The badges added will be removed once you've reloaded Discord
