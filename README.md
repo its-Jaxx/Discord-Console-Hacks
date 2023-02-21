@@ -42,6 +42,9 @@
 # Log in using token
 - Allows you to log in using your token that you may have copied using my other script.
 - Never use this to log in to someone else's token.
+- You need to be logged out for this to work
+- Paste this into your console, a screen will pop up asking for a token.
+- Paste your token into the wiondow and you will be logged in
 
 # Delete Webhook URL
 - Allows you to manually delete a webhook URL
