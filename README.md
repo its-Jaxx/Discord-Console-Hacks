@@ -18,7 +18,7 @@
 - Make sure you saved it and didn't mess anything up in the settings.json file.
 - Alt+F4 to close down Discord completely may not work. Use the "Quit Discord" button in the system tray and double check that it is fully closed down.
 - Use Ctrl+Shift+i to open inspect element, F12 will not work.
-- If it still doesn't work, oepn an issue explaining the problem you're having, I will do my best guiding you.
+- If it still doesn't work, open an issue explaining the problem you're having, I will do my best guiding you.
 
 # Things to keep in mind following all these javascript files:
 
