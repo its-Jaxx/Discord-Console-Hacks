@@ -164,7 +164,7 @@ webpackChunkdiscord_app.push([[Math.random()],{},(req)=>{for(const m of Object.k
 <br>
 
 ![preview](https://user-images.githubusercontent.com/96382604/225421501-8c77bb03-43fe-443d-bb4f-87848e6526b9.png)<br>
-<sup>This isn't a fake screenshot. Your client will really display this.</sup>
+<sup>This is only visible to you.</sup>
 
 ![preview](https://cdn.discordapp.com/attachments/788198099067076638/1004823731056676954/unknown.png)
 </details>
