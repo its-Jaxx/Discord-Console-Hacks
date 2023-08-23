@@ -83,18 +83,14 @@ window.webpackChunkdiscord_app.push([[Math.random()], {}, (req) => {for (const m
 <summary>Expand</summary>
 
 ```js
-window.webpackChunkdiscord_app.push([
-  [Math.random()], {}, (req) => {
-    for (const m of Object.keys(req.c).map((x) => req.c[x].exports).filter((x) => x)) {
-      if (m.default && m.default.getToken !== undefined) {
-        return copy(m.default.getToken())
-      }
-      if (m.getToken !== undefined) {
-        return copy(m.getToken())
-      }
-    }
-  }
-]);
+function getToken() {
+  let a = [];
+  webpackChunkdiscord_app.push([[0],,e=>Object.keys(e.c).find(t=>(t=e(t)?.default?.getToken?.())&&a.push(t))]);
+  console.log(`${a}`);
+  return a[0];
+}
+
+getToken();
 ```
 The token should be in your clipboard now.<br>
 :warning: **Note:** NEVER SHARE YOUR TOKEN WITH ANYONE. ANYONE WHO HAS IT CAN LOG INTO YOUR ACCOUNT AND CAN IMPERSONATE YOU, MESS WITH YOUR ACCOUNT, OR IF YOU HAVE A PAYMENT METHOD THEY CAN EVEN SPEND YOUR MONEY, OR EVEN FIGURE OUT WHERE YOU LIVE!
