@@ -18,7 +18,7 @@ I don't promote using any kind of client modifications. Please don't use the cod
 # How to use these Hacks (Read first if you haven't enabled "Inspect Element")
 
 <details>
-<summary>Expand</summary>
+<summary>Read me first</summary>
 
 - In order to use these you need to be able to inspect element to use the console
 - :warning: **Note:** It only works on web and desktop versions (Windows, Linux, MacOS), not on mobile. Following instructions are with the Windows 10 OS.
@@ -26,7 +26,7 @@ I don't promote using any kind of client modifications. Please don't use the cod
 ## Quit Discord
 - Make sure you fully close down Discord using the "Quit Discord" button in the system tray, or use task manager to close it down.
 ## Change the settings.json file.
-- You should be able to find this by pressing win+r and entering "%appdata%" and pressing enter, now, if you're not in roaming already, enter the folder.
+- You should be able to find this by pressing win+r and entering "%appdata%" and pressing enter, now, if you're not in roaming already, enter the folder.d
 - Then go to the discord folder. In there, you should find the settings.json file.
 ## What to change
 - If there is no line saying "DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING", add it and add ":true,"
@@ -54,7 +54,7 @@ I don't promote using any kind of client modifications. Please don't use the cod
 
 ### Bot & System Spoofing
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 - This will give you the "Bot", "Verified Bot", and the "System Tag"
 
 Bot tag code:
@@ -76,11 +76,35 @@ window.webpackChunkdiscord_app.push([[Math.random()], {}, (req) => {for (const m
 </details>
 <br>
 
+### Login using Discord token
+**:warning: DO NOT GIVE YOUR TOKEN TO ANYONE AS IT GRANTS FULL ACCESS TO YOUR ACCOUNT.**
+
+<details>
+<summary>Show code</summary>
+
+```js
+let token = "your token";
+
+function login(token) {
+    setInterval(() => {
+      document.body.appendChild(document.createElement `iframe`).contentWindow.localStorage.token = `"${token}"`
+    }, 50);
+    setTimeout(() => {
+      location.reload();
+    }, 2500);
+  }
+
+login(token);
+```
+:warning: **Note:** NEVER SHARE YOUR TOKEN WITH ANYONE. ANYONE WHO HAS IT CAN LOG INTO YOUR ACCOUNT AND CAN IMPERSONATE YOU, MESS WITH YOUR ACCOUNT, OR IF YOU HAVE A PAYMENT METHOD THEY CAN EVEN SPEND YOUR MONEY, OR EVEN FIGURE OUT WHERE YOU LIVE!
+</details>
+<br>
+
 ### Copy your Discord token
 **:warning: DO NOT GIVE THIS TO ANYONE. It grants full access to your account.**
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 ```js
 function getToken() {
@@ -102,7 +126,7 @@ The token should be in your clipboard now.<br>
 Enables some hidden features and sets your client to staff mode.
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 This will mark your account as staff even though you're not, giving you access to more settings, but won't give you any more control towards other users than you normally would have.<br>
 (In these menus you can get unreleased Discord updates, emulate a different client, generate build overrides and more.)
@@ -123,7 +147,7 @@ let wpRequire;window.webpackChunkdiscord_app.push([[Math.random()],{},e=>{wpRequ
 This script gives you all badges locally, meaning that only you can see them.
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 Some badges grant access to specific options or menus.<br>
 
@@ -171,7 +195,7 @@ webpackChunkdiscord_app.push([[Math.random()],{},(req)=>{for(const m of Object.k
 You can use this to make fake screenshots without having to use Inspect Element (CTRL + SHIFT + I) each time.
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 ```js
 // Turn it on
@@ -192,7 +216,7 @@ Grants access to channels marked as NSFW on an under-18 account.<br>
 **Only use this script if you are 18+! There is a reason those channels are marked as NSFW.**
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 This script is intended for people (>18) whose accounts have been wrongfully marked as underage. Don't use it for other purposes.
 
@@ -217,7 +241,7 @@ Allows you to manually delete a webhook URL<br>
 Useful if someone has access to your account and you want to remove a webhook, or in order to delete a phishing site's webhook.
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 ```js
 let webhookURL = "PUT_WEBHOOK_URL_HERE";
@@ -235,7 +259,7 @@ await fetch(webhookURL, {
 Activates the AMOLED theme from mobile on desktop and web, which uses darker colors than the normal theme and is better on the eyes.
 
 <details>
-<summary>Expand</summary>
+<summary>Show code</summary>
 
 ```js
 // Add amoled theme
