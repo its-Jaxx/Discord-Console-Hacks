@@ -52,6 +52,70 @@ I don't promote using any kind of client modifications. Please don't use the cod
 </details>
 <br></br>
 
+### Fake mute/deafen
+<details>
+<summary>Show code</summary>
+1. Join voice channel<br>
+2. Mute and deafen yourself<br>
+3. Execute the code<br>
+4. Unmute and speak<br>
+
+```js
+var text = new TextDecoder("utf-8");
+
+WebSocket.prototype.original = WebSocket.prototype.send;
+WebSocket.prototype.send = function(data) {
+    if (Object.prototype.toString.call(data) === "[object ArrayBuffer]") {
+        if (text.decode(data).includes("self_deaf")) data = data.replace('"self_mute":false', 'NashyLove');
+    }
+    WebSocket.prototype.original.apply(this, [data]);
+}
+```
+</details>
+<br>
+
+### Enable experiments, developer options & more
+<details>
+<summary>Show code</summary>
+
+```js
+webpackChunkdiscord_app.push([[0], {}, (e) => { module = Object.values(e.c).find(x => x?.exports?.default?.getUsers).exports.default; }]);
+nodes = Object.values(module._dispatcher._actionHandlers._dependencyGraph.nodes);
+try { nodes.find(x => x.name == "ExperimentStore").actionHandler["OVERLAY_INITIALIZE"]({ user: { flags: 1 } }); } catch (e) { }
+original = [module.getCurrentUser, module.getNonImpersonatedCurrentUser];
+module.getCurrentUser = module.getNonImpersonatedCurrentUser = () => ({ isStaff: () => true });
+nodes.find(x => x.name == "DeveloperExperimentStore").actionHandler["OVERLAY_INITIALIZE"]();
+[module.getCurrentUser, module.getNonImpersonatedCurrentUser] = original;
+```
+</details>
+<br>
+
+### "Listen Along" Spotify without premium
+<details>
+<summary>Show code</summary>
+
+```js
+(webpackChunkdiscord_app.push([
+    [''], {},
+    e => {
+        m = [];
+        for (let c in e.c) m.push(e.c[c])
+    }
+]), m).find(m => m?.exports?.Z?.getAccounts).exports.Z.getAccounts().forEach((conn) => conn.type === "spotify" && (webpackChunkdiscord_app.push([
+    [''], {},
+    e => {
+        m = [];
+        for (let c in e.c) m.push(e.c[c])
+    }
+]), m).find(m => m?.exports?.Z?.isDispatching).exports.Z.dispatch({
+    type: "SPOTIFY_PROFILE_UPDATE",
+    accountId: conn.id,
+    isPremium: true
+}))
+```
+</details>
+<br>
+
 ### Bot & System Spoofing
 <details>
 <summary>Show code</summary>
@@ -138,55 +202,6 @@ let wpRequire;window.webpackChunkdiscord_app.push([[Math.random()],{},e=>{wpRequ
 ![discorddevoptions](https://cdn.discordapp.com/attachments/788198099067076638/1004823296489029702/unknown.png)<br>
 
 <sup>Developer Options menu</sup>
-</details>
-<br>
-
-
-### Get all Badges
-
-This script gives you all badges locally, meaning that only you can see them.
-
-<details>
-<summary>Show code</summary>
-
-Some badges grant access to specific options or menus.<br>
-
-```js
-(() => {
-    let flags = {
-        "DISCORD_EMPLOYEE": 1 << 0,
-        "DISCORD_PARTNER": 1 << 1,
-        "HYPESQUAD_EVENTS": 1 << 2,
-        "BUG_HUNTER_LEVEL_1": 1 << 3,
-        "HOUSE_BRAVERY": 1 << 6,
-        "HOUSE_BRILLIANCE": 1 << 7,
-        "HOUSE_BALANCE": 1 << 8,
-        "EARLY_SUPPORTER": 1 << 9,
-        "BUG_HUNTER_LEVEL_2": 1 << 14,
-        "VERIFIED_BOT_DEVELOPER": 1 << 17,
-        "CERTIFIED_MODERATOR": 1 << 18,
-        "ACTIVE_DEVELOPER": 1 << 22
-    };
-
-    webpackChunkdiscord_app.push([[Math.random()], {}, req => {
-        for (const m of Object.keys(req.c).map(x => req.c[x].exports).filter(x => x)) {
-            if (m.default && m.default.getCurrentUser !== undefined) {
-                return m.default.getCurrentUser().flags = Object.values(flags).reduce((pre, cur) => pre + cur, 0);
-            }
-        }
-    }]);
-})();
-```
-To get all badges and place your account under quarantine (visually):
-```js
-webpackChunkdiscord_app.push([[Math.random()],{},(req)=>{for(const m of Object.keys(req.c).map((x)=>req.c[x].exports).filter((x)=>x)){if(m.default&&m.default.getCurrentUser!==undefined){return m.default.getCurrentUser().flags=-1}}}]);
-```
-<br>
-
-![preview](https://user-images.githubusercontent.com/96382604/225421501-8c77bb03-43fe-443d-bb4f-87848e6526b9.png)<br>
-<sup>This isn't a fake screenshot. Your client will really display this.</sup>
-
-![preview](https://cdn.discordapp.com/attachments/788198099067076638/1004823731056676954/unknown.png)
 </details>
 <br>
 
