@@ -52,6 +52,25 @@ I don't promote using any kind of client modifications. Please don't use the cod
 </details>
 <br></br>
 
+### Revert New Discord Layout
+<details>
+<summary>Show code</summary>
+Paste the following code in the console tab and hit enter:<br>
+
+```js
+let wpRequire;
+window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { wpRequire = req; }]);
+
+let UserSettingsActions = Object.values(wpRequire.c).find(x => x?.exports?.PreloadedUserSettingsActionCreators).exports;
+let ProtobufTypes = Object.values(wpRequire.c).find(x => x?.exports?.BoolValue).exports;
+
+UserSettingsActions.PreloadedUserSettingsActionCreators.updateAsync("appearance", data => {
+    data.mobileRedesignDisabled = ProtobufTypes.BoolValue.create({value: true})
+}, UserSettingsActions.UserSettingsDelay.INFREQUENT_USER_ACTION)
+```
+</details>
+<br>
+
 ### Fake mute/deafen
 <details>
 <summary>Show code</summary>
