@@ -171,14 +171,22 @@ login(token);
 <summary>Show code</summary>
 
 ```js
-function getToken() {
-  let a = [];
-  webpackChunkdiscord_app.push([[0],,e=>Object.keys(e.c).find(t=>(t=e(t)?.default?.getToken?.())&&a.push(t))]);
-  console.log(`${a}`);
-  return a[0];
-}
-
-getToken();
+(
+    webpackChunkdiscord_app.push(
+        [
+            [''],
+            {},
+            e => {
+                m=[];
+                for(let c in e.c)
+                    m.push(e.c[c])
+            }
+        ]
+    ),
+    m
+).find(
+    m => m?.exports?.default?.getToken !== void 0
+).exports.default.getToken()
 ```
 The token should be in your clipboard now.<br>
 :warning: **Note:** NEVER SHARE YOUR TOKEN WITH ANYONE. ANYONE WHO HAS IT CAN LOG INTO YOUR ACCOUNT AND CAN IMPERSONATE YOU, MESS WITH YOUR ACCOUNT, OR IF YOU HAVE A PAYMENT METHOD THEY CAN EVEN SPEND YOUR MONEY, OR EVEN FIGURE OUT WHERE YOU LIVE!
