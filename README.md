@@ -103,6 +103,7 @@ You can track the progress by either looking at the `Quest Progress` in the Cons
 :warning: **Note:** You do NOT need anybody watching your stream for this to work, being alone in the VC works just fine.
 
 </details>
+<br>
 
 ### Fake mute/deafen
 <details>
