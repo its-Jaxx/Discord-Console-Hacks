@@ -52,6 +52,58 @@ I don't promote using any kind of client modifications. Please don't use the cod
 </details>
 <br></br>
 
+### Complete Recent Discord Quest
+<details>
+<summary>Show Code</summary>
+1. Accept the quest under User Settings -> Gift Inventory<br>
+2. Join a VC<br>
+3. Stream any application, don't have to be the quest game<br>
+4. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> to open DevTools<br>
+5. Go to the `Console` tab<br>
+6. Paste the following code an hit enter:<br>
+
+```js
+let wpRequire;
+window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { wpRequire = req; }]);
+
+let api = Object.values(wpRequire.c).find(x => x?.exports?.getAPIBaseURL).exports.HTTP;
+let ApplicationStreamingStore = Object.values(wpRequire.c).find(x => x?.exports?.default?.getStreamerActiveStreamMetadata).exports.default;
+let QuestsStore = Object.values(wpRequire.c).find(x => x?.exports?.default?.getQuest).exports.default;
+let encodeStreamKey = Object.values(wpRequire.c).find(x => x?.exports?.encodeStreamKey).exports.encodeStreamKey;
+let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+let quest = [...QuestsStore.quests.values()].find(x => x.userStatus?.enrolledAt && !x.userStatus?.completedAt)
+if(!quest) {
+	console.log("You don't have any uncompleted quests!")
+} else {
+	let streamId = encodeStreamKey(ApplicationStreamingStore.getCurrentUserActiveStream())
+	let secondsNeeded = quest.config.streamDurationRequirementMinutes * 60
+	let heartbeat = async function() {
+		console.log("Completing quest", quest.config.messages.gameTitle, "-", quest.config.messages.questName)
+		while(true) {
+			let res = await api.post({url: `/quests/${quest.id}/heartbeat`, body: {stream_key: streamId}})
+			let progress = res.body.stream_progress_seconds
+			
+			console.log(`Quest progress: ${progress}/${secondsNeeded}`)
+			
+			if(progress >= secondsNeeded) break;
+			await sleep(30 * 1000)
+		}
+		
+		console.log("Quest completed!")
+	}
+	heartbeat()
+}
+```
+7. Keep the stream running for 15 minutes<br>
+8. You can now claim the reward in User Settings -> Gift Inventory!
+
+You can track the progress by either looking at the `Quest Progress` in the Console tab, or by opening the Gift Inventory tab in settings. The progress should update every 30 seconds.
+
+:warning: **Note:** You do NOT need anybody watching your stream for this to work, being alone in the VC works just fine.
+
+</details>
+
 ### Fake mute/deafen
 <details>
 <summary>Show code</summary>
