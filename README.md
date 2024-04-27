@@ -339,13 +339,10 @@ Activates the AMOLED theme from mobile on desktop and web, which uses darker col
 
 ```js
 // Add amoled theme
-document.body.classList.add("theme-amoled");
+var style=document.createElement("style");style.type="text/css",style.innerHTML=".theme-dark {--background-primary: #000;--background-secondary: #171717;--background-secondary-alt: #000;--background-tertiary: #000;--channeltextarea-background: #171717;--background-accent: #202020;--background-accent: #202020;--background-accent: #202020;--background-accent: #202020;--background-accent: #202020;--background-accent: #000;} .tabBody-3YRQ8W {background: #000;}",document.getElementsByTagName("head")[0].appendChild(style);
 ```
 
-```js
-// Remove amoled theme
-document.body.classList.remove("theme-amoled");
-```
+To remove this theme, simply reload Discord
 
 </details>
 
