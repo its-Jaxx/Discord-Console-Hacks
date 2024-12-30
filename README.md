@@ -224,13 +224,13 @@ login(token);
 <summary>Show code</summary>
 
 ```js
-(
+let str = `(
     webpackChunkdiscord_app.push(
         [
             [''],
             {},
             e => {
-                m=[];
+                m=[] ;
                 for(let c in e.c)
                     m.push(e.c[c])
             }
@@ -239,7 +239,12 @@ login(token);
     m
 ).find(
     m => m?.exports?.default?.getToken !== void 0
-).exports.default.getToken()
+).exports.default.getToken()`;
+
+let result = eval(str);
+
+console.clear()
+console.log("\x1b[94mYour token:\n\n\x1b[95m" + result + "\x1b[0m");
 ```
 The token should be in your clipboard now.<br>
 :warning: **Note:** NEVER SHARE YOUR TOKEN WITH ANYONE. ANYONE WHO HAS IT CAN LOG INTO YOUR ACCOUNT AND CAN IMPERSONATE YOU, MESS WITH YOUR ACCOUNT, OR IF YOU HAVE A PAYMENT METHOD THEY CAN EVEN SPEND YOUR MONEY, OR EVEN FIGURE OUT WHERE YOU LIVE!
