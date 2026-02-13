@@ -144,6 +144,4 @@
     state.profileBadges.delete(badge.key);
     reapplyAll();
   };
-
-  console.log("Persistent fake badge system loaded.");
 })();
