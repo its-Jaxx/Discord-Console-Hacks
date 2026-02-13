@@ -210,7 +210,7 @@ login(token);
 
 ---
 
-### Apply Discord Badges (Visual Only)
+### Apply Discord Badges (Only locally visible)
 
 <details>
 <summary>Expand</summary>
