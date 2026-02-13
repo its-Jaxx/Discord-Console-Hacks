@@ -224,27 +224,34 @@ login(token);
 <summary>Show code</summary>
 
 ```js
-let str = `(
-    webpackChunkdiscord_app.push(
-        [
-            [''],
-            {},
-            e => {
-                m=[] ;
-                for(let c in e.c)
-                    m.push(e.c[c])
+window.webpackChunkdiscord_app.push([
+    [Symbol()],
+    {},
+    (runtime) => {
+        for (let module of Object.values(runtime.c)) {
+            try {
+                if (!module.exports || module.exports === window) {
+                    continue;
+                }
+                if (module.exports?.getToken) {
+                    token = module.exports.getToken();
+                }
+                for (let key in module.exports) {
+                    const exported = module.exports[key];
+                    if (
+                        exported?.getToken &&
+                        exported[Symbol.toStringTag] !== "IntlMessagesProxy"
+                    ) {
+                        token = console.log("\x1b[94mYour token:\n\x1b[95m" + exported.getToken() + "\x1b[0m");
+                    }
+                }
+            } catch {
             }
-        ]
-    ),
-    m
-).find(
-    m => m?.exports?.default?.getToken !== void 0
-).exports.default.getToken()`;
-
-let result = eval(str);
-
-console.clear()
-console.log("\x1b[94mYour token:\n\n\x1b[95m" + result + "\x1b[0m");
+        }
+    }
+]);
+window.webpackChunkdiscord_app.pop();
+token;
 ```
 The token should be in your clipboard now.<br>
 :warning: **Note:** NEVER SHARE YOUR TOKEN WITH ANYONE. ANYONE WHO HAS IT CAN LOG INTO YOUR ACCOUNT AND CAN IMPERSONATE YOU, MESS WITH YOUR ACCOUNT, OR IF YOU HAVE A PAYMENT METHOD THEY CAN EVEN SPEND YOUR MONEY, OR EVEN FIGURE OUT WHERE YOU LIVE!
